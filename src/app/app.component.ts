@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { DisplayComponent } from './display.component';
+import { HeaderComponent } from './header.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [HeaderComponent, DisplayComponent],
   template: `
     <app-header [title]="title"></app-header>
     <div class="content">

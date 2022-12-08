@@ -1,7 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-display',
+  standalone: true,
+  imports: [CommonModule],
   template: `
     <div>
       <p *ngIf="isEven; else odd">Its Even 🙌</p>

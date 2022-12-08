@@ -1,7 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule],
   template: ` <header>
     <h1>{{ title | titlecase }}</h1>
   </header>`,
