@@ -1,66 +1,15 @@
 import { Component } from '@angular/core';
-import { DI_TEST } from 'src/tokens';
-import { DisplayComponent } from './display.component';
+import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, DisplayComponent],
+  imports: [RouterModule, HeaderComponent],
   // providers: [{ provide: DI_TEST, useValue: 'Hello from DI' }],
-  template: `
-    <app-header [title]="title"></app-header>
-    <div class="content">
-      <!-- {{ isEven() }} -->
-      <app-display [isEven]="isEven"></app-display>
-      <button (click)="setValue($event)">Try</button>
-    </div>
-  `,
-  styles: [
-    `
-      .content {
-        height: calc(100vh - 6.5em);
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-      }
-
-      button {
-        padding: 1em 2em;
-        font-size: 1.5em;
-        color: white;
-        background-color: dodgerblue;
-        outline: none;
-        border: none;
-        border-radius: 0.5em;
-        &:hover {
-          cursor: pointer;
-          background-color: darken($color: dodgerblue, $amount: 10);
-        }
-      }
-    `,
-  ],
+  template: `<app-header [title]="title"></app-header>
+    <div class="content"><router-outlet></router-outlet></div>`,
 })
 export class AppComponent {
   title = 'standalone';
-  x: number | undefined;
-
-  get isEven(): boolean {
-    console.log('Getter called');
-    if (this.x) return !(this.x % 2);
-    console.error('Not able to determine since its undefined');
-    return false;
-  }
-
-  setValue(event: MouseEvent): void {
-    this.x = event.clientX;
-  }
-
-  // isEven():boolean {
-  //   console.log('Method called');
-  //   if (this.x) return !(this.x % 2);
-  //   console.error('Not able to determine since its undefined');
-  //   return false;
-  // }
 }
