@@ -1,8 +1,14 @@
 import { Route } from '@angular/router';
-import { HomeComponent } from './app/home.component';
-import { Page1Component } from './app/page1.component';
 
 export const APP_ROUTES: Route[] = [
-  { path: '', component: HomeComponent },
-  { path: 'page1', component: Page1Component },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./app/home.component').then((tsm) => tsm.HomeComponent),
+  },
+  {
+    path: 'page1',
+    loadComponent: () =>
+      import('./app/page1.component').then((tsm) => tsm.Page1Component),
+  },
 ];
