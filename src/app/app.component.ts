@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DI_TEST } from 'src/tokens';
 import { DisplayComponent } from './display.component';
 import { HeaderComponent } from './header.component';
 
@@ -6,6 +7,7 @@ import { HeaderComponent } from './header.component';
   selector: 'app-root',
   standalone: true,
   imports: [HeaderComponent, DisplayComponent],
+  // providers: [{ provide: DI_TEST, useValue: 'Hello from DI' }],
   template: `
     <app-header [title]="title"></app-header>
     <div class="content">
